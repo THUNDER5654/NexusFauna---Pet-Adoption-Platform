@@ -1,52 +1,51 @@
 package app;
 
-import controllers.LoginController;
-import dao.DatabaseConnection;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import util.DBConnection;
+import util.AlertBox;
 
 public class MainApp extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
-        // Initialize database connection
         try {
-            DatabaseConnection.getConnection();
-            System.out.println("Database connected successfully");
+            // 1️⃣ Initialize database
+            if (!DBConnection.connect()) {
+                AlertBox.showError("Database Error", "Unable to connect to the database.");
+                System.exit(1);
+            }
+
+            // 2️⃣ Load initial UI (Login)
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/fxml/Login.fxml")
+            );
+
+            Scene scene = new Scene(loader.load());
+
+            // 3️⃣ Apply CSS
+            scene.getStylesheets().add(
+                    getClass().getResource("/styles/Styles.css").toExternalForm()
+            );
+
+            // 4️⃣ Configure stage
+            primaryStage.setTitle("Pet Adoption System");
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+
+            // 5️⃣ Close DB on exit
+            primaryStage.setOnCloseRequest(event -> DBConnection.disconnect());
+
         } catch (Exception e) {
-            System.err.println("Failed to connect to database: " + e.getMessage());
-            // Continue with application (for demo purposes)
+            e.printStackTrace();
+            AlertBox.showError("Startup Error", "Application failed to start.");
+            System.exit(1);
         }
-        
-        // Create login controller
-        LoginController loginController = new LoginController(primaryStage);
-        Scene loginScene = loginController.getScene();
-        
-        // Configure primary stage
-        primaryStage.setTitle("NexusFauna - Pet Adoption System");
-        primaryStage.setScene(loginScene);
-        primaryStage.setMinWidth(1200);
-        primaryStage.setMinHeight(800);
-        
-        // Set application icon
-        try {
-            Image icon = new Image(getClass().getResourceAsStream("/images/pet-icon.png"));
-            primaryStage.getIcons().add(icon);
-        } catch (Exception e) {
-            System.out.println("Icon not found, using default");
-        }
-        
-        primaryStage.show();
-        
-        // Handle application close
-        primaryStage.setOnCloseRequest(e -> {
-            DatabaseConnection.closeConnection();
-            System.exit(0);
-        });
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
