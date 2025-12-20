@@ -1,102 +1,208 @@
 # 🐾 NexusFauna – Pet Adoption Platform
 
-A modern digital platform built to connect animal shelters with prospective adopters. This system simplifies the pet adoption process by digitizing listings, applications, and communication between users — making adoption faster, transparent, and accessible.
+A modern, role-based digital platform designed to connect animal shelters with prospective adopters. **NexusFauna** streamlines the entire pet adoption process by digitizing pet listings, adoption applications, and communication — making adoption faster, more transparent, and accessible for everyone involved.
 
 ---
 
-## 🚀 Overview
+## 🚀 Project Overview
 
-The **NexusFauna Pet Adoption Platform** replaces outdated, slow manual processes with a streamlined digital solution. Users can explore available pets, apply for adoption, and communicate directly through the platform — all in one place.
+Traditional pet adoption workflows are often slow, fragmented, and paper-based. NexusFauna replaces these outdated processes with a centralized digital solution where:
 
-This project demonstrates how technology can make adoption easier for shelters and more meaningful for families looking to adopt.
+* Shelters can efficiently manage pets and applications
+* Adopters can discover pets and apply online
+* Administrators can oversee and regulate platform activity
 
----
-
-## ❗ Problems with Traditional Adoption
-
-- Requires visiting multiple shelters physically  
-- Manual paperwork and slow processing  
-- Limited visibility of adoptable pets  
-- Poor communication between shelters and adopters  
-- No real-time updates  
+The platform demonstrates how technology can meaningfully improve adoption outcomes and help animals find loving homes faster.
 
 ---
 
-## 💡 Digital Solution
+## ❗ Problems with Traditional Adoption Systems
 
-✔ Online pet browsing  
-✔ Streamlined adoption applications  
-✔ Real-time application status  
-✔ Role-based dashboards  
-✔ Centralized and secure data handling  
+* Physical visits required to multiple shelters
+* Manual paperwork and delayed approvals
+* Limited visibility of adoptable pets
+* Inefficient communication between shelters and adopters
+* No real-time tracking of application status
+
+---
+
+## 💡 NexusFauna Digital Solution
+
+NexusFauna addresses these challenges with:
+
+✔ Online pet browsing with detailed profiles
+✔ Streamlined digital adoption applications
+✔ Real-time adoption status tracking
+✔ Role-based dashboards for different users
+✔ Centralized, secure data management
 
 ---
 
 ## 🧑‍💻 User Roles & Dashboards
 
-### 🔹 Admin
-- Manage user accounts  
-- Approve shelter pet listings  
-- Configure global settings  
+### 🔹 Admin Dashboard
 
-### 🔹 Shelter
-- Add, edit, and manage pet listings  
-- Review and approve/reject adoption applications  
-- Communicate with adopters  
+* Manage and monitor user accounts
+* Approve or reject shelter pet listings
+* Configure and maintain global system settings
 
-### 🔹 Adopter
-- Browse available pets  
-- Submit adoption requests  
-- Track status in real time  
+### 🔹 Shelter Dashboard
+
+* Add, edit, and manage pet listings
+* Review, approve, or reject adoption applications
+* Communicate directly with adopters
+
+### 🔹 Adopter Dashboard
+
+* Browse and search available pets
+* Submit adoption requests online
+* Track application status in real time
 
 ---
 
-## 🏗 Architecture
+## 🏗 System Architecture
 
-- Role-based login system  
-- Centralized database (pets, users, applications)  
-- Modular and scalable structure  
+* Secure role-based authentication and authorization
+* Centralized relational database for pets, users, and applications
+* Modular and scalable architecture following OOP principles
 
 ---
 
 ## 🛠 Technology Stack
 
-| Component       | Technology Used   |
-|-----------------|-------------------|
-| Language        | Java              |
-| UI              | JavaFX            |
-| Database        | MySQL / SQLite    |
-| Software Design | OOP Principles    |
+| Component            | Technology                        |
+| -------------------- | --------------------------------- |
+| Programming Language | Java                              |
+| User Interface       | JavaFX                            |
+| Database             | MySQL / SQLite                    |
+| Design Approach      | Object-Oriented Programming (OOP) |
 
 ---
 
-## 📌 Features
+## 📌 Key Features
 
-- User authentication and role detection  
-- Separate dashboards for Admin, Shelter & Adopter  
-- Pet listing and adoption request system  
-- Status tracking and communication  
+* User authentication with automatic role detection
+* Dedicated dashboards for Admin, Shelter, and Adopter roles
+* Complete pet listing and adoption request workflow
+* Real-time application status updates
+* Built-in communication between shelters and adopters
+
+---
+
+## 📁 Project Folder Structure
+
+```
+NexusFauna/
+│
+├── src/
+│   ├── application/
+│   │   └── Main.java            # Application entry point
+│   │
+│   ├── controllers/             # JavaFX controllers
+│   │   ├── AdminController.java
+│   │   ├── ShelterController.java
+│   │   └── AdopterController.java
+│   │
+│   ├── models/                  # Data models (OOP entities)
+│   │   ├── User.java
+│   │   ├── Pet.java
+│   │   └── AdoptionApplication.java
+│   │
+│   ├── services/                # Business logic & database operations
+│   │   ├── AuthService.java
+│   │   ├── PetService.java
+│   │   └── ApplicationService.java
+│   │
+│   └── utils/                   # Utility classes
+│       └── DBConnection.java
+│
+├── resources/
+│   ├── fxml/                     # JavaFX UI layouts
+│   │   ├── login.fxml
+│   │   ├── admin_dashboard.fxml
+│   │   ├── shelter_dashboard.fxml
+│   │   └── adopter_dashboard.fxml
+│   │
+│   └── styles/                   # CSS styles
+│       └── style.css
+│
+├── database/
+│   └── nexusfauna.db             # SQLite database (or MySQL config)
+│
+├── lib/                          # External libraries (JDBC, etc.)
+│
+├── README.md
+└── .gitignore
+```
+
+---
+
+## ▶ How to Run the Project
+
+### 🔧 Prerequisites
+
+Ensure the following are installed on your system:
+
+* **Java JDK 8 or higher**
+* **JavaFX SDK** (if not bundled with your JDK)
+* **MySQL or SQLite**
+* IDE such as **IntelliJ IDEA**, **Eclipse**, or **NetBeans**
+
+---
+
+### 🛠 Database Setup
+
+#### Option 1: SQLite (Recommended for Testing)
+
+1. Navigate to the `database/` folder
+2. Ensure `nexusfauna.db` exists
+3. Update the database path in `DBConnection.java` if required
+
+#### Option 2: MySQL
+
+1. Create a database named `nexusfauna`
+2. Import required tables (users, pets, applications)
+3. Update database credentials in `DBConnection.java`
+
+---
+
+### ▶ Running the Application
+
+#### Using an IDE
+
+1. Open the project in your IDE
+2. Configure JavaFX library in project settings
+3. Set `Main.java` as the startup class
+4. Run the project
+
+#### Using Command Line (Optional)
+
+```bash
+javac --module-path /path/to/javafx/lib --add-modules javafx.controls,javafx.fxml src/application/Main.java
+java --module-path /path/to/javafx/lib --add-modules javafx.controls,javafx.fxml application.Main
+```
 
 ---
 
 ## 🔮 Future Enhancements
 
-- 📩 Notification system  
-- 📍 Map integration for nearby shelters  
-- ☁ Cloud migration for reliability and scalability  
-- 📱 Mobile app version  
+* 📩 Notification system (email / in-app alerts)
+* 📍 Map integration to locate nearby shelters
+* ☁ Cloud deployment for scalability and reliability
+* 📱 Mobile application (Android / iOS)
 
 ---
 
 ## 🧾 Conclusion
 
-The NexusFauna Pet Adoption Platform transforms the adoption workflow by making it:
+The **NexusFauna Pet Adoption Platform** modernizes the adoption process by making it:
 
-- Faster  
-- More organized  
-- More transparent  
-- More accessible  
+* Faster and more efficient
+* Well-organized and transparent
+* Accessible to a wider audience
 
-This system aims to increase successful pet adoptions and help animals find loving homes.
+By improving communication and visibility, NexusFauna aims to increase successful pet adoptions and help more animals find safe, loving homes.
 
 ---
+
+❤️ *Adopt, don’t shop — powered by NexusFauna.*
